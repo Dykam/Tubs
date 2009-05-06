@@ -21,6 +21,11 @@
     <CompileTarget>Bin</CompileTarget>
     <Externalconsole>true</Externalconsole>
     <ExtraCompilerArguments>-std=c99</ExtraCompilerArguments>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="Custom" name="Git Push" command="gitcommit &quot;Context menu Commit&quot;" workingdir="${ProjectDir}" />
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release</OutputPath>

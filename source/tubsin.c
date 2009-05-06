@@ -27,19 +27,23 @@ uint Tubs_In_ExtractProvidedDataLength(const byte *source)
 
 Tubs_BlockSignaturePtr Tubs_In_ExtractBlockSignature(const byte *source)
 {
-	BlockSignaturePtr sigPtr = malloc(sizeof(BlockSignature));
-	u8 i = 64;
-	while(i-- != 0)
-		(*sigPtr)[i] = source[i];
+	Tubs_BlockSignaturePtr sigPtr = malloc(sizeof(Tubs_BlockSignature));
+	u8 length = source[0] << 8 | source[1];
+	source += 2;
+	sigPtr->Length = length;
+	while(length-- != 0)
+		sigPtr->Data[length] = source[length];
 	return sigPtr;
 }
 
-bool Tubs_In_Compare_Block_Signatures(Tubs_BlockSignaturePtr a, Tubs_BlockSignaturePtr two)
+bool Tubs_In_Compare_Block_Signatures(Tubs_BlockSignaturePtr a, Tubs_BlockSignaturePtr b)
 {
-	u8 i = 64;
-	while(i-- != 0)
-		if(a[i] != b[i])
-			return false;
+	if(a->Length == b->Length) {
+		u8 i = b->Length;
+		while(i-- != 0)
+			if(a->Data[i] != b->Data[i])
+				return false;
+	}
 	return true;
 }
 
@@ -79,9 +83,9 @@ Tubs_ReadOnlyBlockPtr Tubs_In_ReadBlock(const byte *source)
 	source += 4;
 	if(!dataLength) {
 		Tubs_BlockSignaturePtr sigPtr = Tubs_In_ExtractBlockSignature(source);
-		memcpy(blockPtr->Signature, *sigPtr, sizeof(byte) * 64);
+		blockPtr->Signature->Data = sigPtr->Data;
 		dataLength = Tubs_In_ExtractDataLengthByBlockSignature(source, sigPtr);
-		source += 64;
+		source += sigPtr->Length;
 	}
 	blockPtr->DataLength = dataLength;
 	byte* data = malloc(sizeof(byte) * dataLength);

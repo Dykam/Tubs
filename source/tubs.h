@@ -1,6 +1,10 @@
 #include "standard.h"
 
-typedef byte Tubs_BlockSignature[64]; 
+typedef struct
+{
+	u8 Length;
+	byte *Data;
+} Tubs_BlockSignature; 
 typedef Tubs_BlockSignature *Tubs_BlockSignaturePtr;
 
 typedef struct

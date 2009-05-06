@@ -1,0 +1,4 @@
+#!/bin/sh
+git add -A
+git commit -m "Context menu Commit"
+git push origin master
