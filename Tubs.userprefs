@@ -1,0 +1,33 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="source/main.c" ctype="Workbench">
+    <Files>
+      <File FileName="source/tubs.c" Line="17" Column="2" />
+      <File FileName="source/tubs.h" Line="24" Column="3" />
+      <File FileName="source/main.c" Line="15" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Tubs" expanded="True">
+            <Node name="source" expanded="True">
+              <Node name="main.c" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True">
+          <Node name="Tubs" expanded="True">
+            <Node name="Globals" expanded="True">
+              <Node name="PullBlockSignature" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" ctype="Workspace" />
+</Properties>
